@@ -130,7 +130,9 @@ def play():
 if __name__ == '__main__':
     # Setup
     size = int(input("Size of board:\n"))
-    
+    temp = input("Do you want to override game over mechanisms?  ") 
+    override = (temp == "Yes" or temp == "yes")
+    print(f'You have chosen to {'' if override else 'not '}override')
     # Initialize empty board
     arr = [[0 for x in range(size)] for x in range(size)]
     
@@ -170,7 +172,7 @@ if __name__ == '__main__':
         
         # Check if game is over
         game_over, reason = check_game_over()
-        if game_over:
+        if game_over and not override:
             print(f"\n🎮 GAME OVER: {reason}")
             print("Press Ctrl+C to exit")
             # Display final state
