@@ -39,5 +39,6 @@ if __name__ == '__main__':
         for i in arr:
             for j in i:
                 print("\033[35m█\033" if j==1 else " ", end="")
+                print("\033[35m█\033" if j==1 else " ", end="")
             print()
         time.sleep(0.1)
