@@ -45,9 +45,12 @@ This implementation creates a grid of cells that can be either alive (represente
 ## ✨ Features
 
 - **Customizable board size**: Choose your preferred grid dimensions
-- **Random initial state**: Each run starts with a randomly generated pattern
+- **Multiple starting options**: Random patterns or preset interesting patterns
 - **Real-time visualization**: Watch the patterns evolve with colorful terminal output
-- **Continuous simulation**: The game runs indefinitely until manually stopped
+- **Game over detection**: Automatically detects static patterns, oscillators, and empty boards
+- **Wrapping boundaries**: Toroidal grid where patterns can move across edges
+- **Save/Load functionality**: Save interesting patterns and load them later
+- **Pattern library**: Includes classic patterns like gliders, oscillators, and static formations
 
 ## 🚀 How to Run
 
@@ -58,6 +61,7 @@ This implementation creates a grid of cells that can be either alive (represente
 │  python script.py                   │
 │                                      │
 │  ✨ Enter board size when prompted   │
+│  🎯 Choose starting pattern          │
 │  🎨 Watch the magic happen!         │
 └──────────────────────────────────────┘
 ```
@@ -69,7 +73,16 @@ This implementation creates a grid of cells that can be either alive (represente
    python script.py
    ```
 4. Enter your desired board size when prompted
-5. Watch the Game of Life unfold!
+5. Choose from these starting options:
+   - **Random**: Randomly generated pattern
+   - **Glider**: Classic moving pattern
+   - **Blinker**: Simple oscillator
+   - **Block**: Static pattern
+   - **Toad**: Period-2 oscillator
+   - **Beacon**: Period-2 oscillator
+   - **Load from file**: Load a previously saved pattern
+6. Watch the Game of Life unfold!
+7. Press Ctrl+C to exit (you'll be prompted to save your pattern)
 
 ## 📜 Game Rules
 
@@ -94,19 +107,40 @@ The simulation follows Conway's original rules:
 ## 🎮 Controls
 
 ```
-┌─────────────────────┐
-│   🎹 CONTROLS 🎹    │
-├─────────────────────┤
-│  Ctrl+C → Exit Game │
-└─────────────────────┘
+┌─────────────────────────┐
+│   🎹 CONTROLS 🎹        │
+├─────────────────────────┤
+│  Ctrl+C → Exit Game     │
+│  (auto-save prompt)     │
+└─────────────────────────┘
 ```
+
+## 🌟 New Features
+
+### 🎯 Game Over Detection
+- **Static patterns**: Detects when the board reaches a stable state
+- **Oscillating patterns**: Identifies repeating cycles (up to period 10)
+- **Empty boards**: Recognizes when all cells have died
+
+### 📁 Pattern Management
+- **Save patterns**: Automatically prompted when game ends or exits
+- **Load patterns**: Choose from saved files or preset patterns
+- **Pattern library**: Includes famous Conway's Game of Life patterns
+- **JSON format**: Easy to edit and share patterns
+
+### 🌐 Toroidal Grid
+- **Wrapping boundaries**: Patterns can move across edges
+- **Infinite feel**: No more dead border zones
+- **Glider journeys**: Watch gliders travel across the wrapped world
 
 ## ⚙️ Technical Details
 
 - **Language**: Python 3
-- **Dependencies**: Built-in modules only (`time`, `os`, `random`)
+- **Dependencies**: Built-in modules only (`time`, `os`, `random`, `copy`, `json`)
 - **Display**: Terminal-based with ANSI color codes
 - **Update Rate**: 0.1 seconds between generations
+- **Grid Type**: Toroidal (wrapping boundaries)
+- **Pattern Storage**: JSON format for easy editing and sharing
 
 ## 📁 File Structure
 
@@ -116,26 +150,29 @@ The simulation follows Conway's original rules:
 ├── 🚀 main.py            # Launcher script to open game in new terminal
 ├── 👋 hello_world.py     # Additional Python script
 ├── 📜 rules.txt          # Game rules reference
-└── 📖 README.md          # This file
+├── 📖 README.md          # This file
+└── 📂 patterns/          # Pattern library
+    ├── glider.json       # Classic glider pattern
+    └── toad.json         # Toad oscillator pattern
 ```
 
 ## ⚠️ Known Limitations
 
-- The game currently runs indefinitely (TODO: implement game over detection)
-- Border cells are treated as permanently dead
-- No save/load functionality for interesting patterns
+- None! All major features have been implemented ✅
 
-## 🔮 Future Improvements
+## 🎯 Completed Features
+
+All the features from the original wishlist have been implemented:
 
 ```
 ┌─────────────────────────────────────────────┐
-│             🚀 COMING SOON 🚀               │
+│             ✅ COMPLETED ✅                 │
 ├─────────────────────────────────────────────┤
-│ ☐ Game over detection for static patterns  │
-│ ☐ Pattern loading from files               │
-│ ☐ Preset interesting starting patterns     │
-│ ☐ Pause/resume functionality               │
-│ ☐ Wrapping boundaries (toroidal grid)      │
+│ ✅ Game over detection for static patterns  │
+│ ✅ Pattern loading from files               │
+│ ✅ Preset interesting starting patterns     │
+│ ✅ Save/load functionality                  │
+│ ✅ Wrapping boundaries (toroidal grid)      │
 └─────────────────────────────────────────────┘
 ```
 
