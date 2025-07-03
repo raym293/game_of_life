@@ -45,9 +45,11 @@ This implementation creates a grid of cells that can be either alive (represente
 ## ✨ Features
 
 - **Customizable board size**: Choose your preferred grid dimensions
-- **Random initial state**: Each run starts with a randomly generated pattern
+- **Multiple starting patterns**: Choose from random generation or 5 preset patterns (Glider, Blinker, Block, Toad, Beacon)
+- **Game over detection**: Automatically detects static patterns, oscillating patterns, and empty boards
+- **Wrapping boundaries**: Toroidal grid implementation where edges wrap around
 - **Real-time visualization**: Watch the patterns evolve with colorful terminal output
-- **Continuous simulation**: The game runs indefinitely until manually stopped
+- **Pattern recognition**: Intelligent detection of repeating and static states
 
 ## 🚀 How to Run
 
@@ -69,7 +71,9 @@ This implementation creates a grid of cells that can be either alive (represente
    python script.py
    ```
 4. Enter your desired board size when prompted
-5. Watch the Game of Life unfold!
+5. Choose whether to override game over mechanisms (for continuous play)
+6. Select your starting pattern (random or one of 5 presets)
+7. Watch the Game of Life unfold!
 
 ## 📜 Game Rules
 
@@ -94,36 +98,38 @@ The simulation follows Conway's original rules:
 ## 🎮 Controls
 
 ```
-┌─────────────────────┐
-│   🎹 CONTROLS 🎹    │
-├─────────────────────┤
-│  Ctrl+C → Exit Game │
-└─────────────────────┘
+┌─────────────────────────────────────────────┐
+│               🎹 CONTROLS 🎹                │
+├─────────────────────────────────────────────┤
+│  Enter board size → Set grid dimensions     │
+│  Choose pattern → Select starting pattern   │
+│  Override option → Enable/disable game over │
+│  Ctrl+C → Exit Game                         │
+└─────────────────────────────────────────────┘
 ```
 
 ## ⚙️ Technical Details
 
 - **Language**: Python 3
-- **Dependencies**: Built-in modules only (`time`, `os`, `random`)
+- **Dependencies**: Built-in modules only (`time`, `os`, `random`, `copy`)
 - **Display**: Terminal-based with ANSI color codes
 - **Update Rate**: 0.1 seconds between generations
+- **Grid Type**: Toroidal (wrapping boundaries)
 
 ## 📁 File Structure
 
 ```
 📦 game_of_life/
 ├── 🐍 script.py          # Main Game of Life implementation
-├── 🚀 main.py            # Launcher script to open game in new terminal
-├── 👋 hello_world.py     # Additional Python script
 ├── 📜 rules.txt          # Game rules reference
 └── 📖 README.md          # This file
 ```
 
 ## ⚠️ Known Limitations
 
-- The game currently runs indefinitely (TODO: implement game over detection)
-- Border cells are treated as permanently dead
-- No save/load functionality for interesting patterns
+- Performance may degrade with very large board sizes
+- Terminal display requires ANSI color support
+- No save/load functionality for custom patterns
 
 ## 🔮 Future Improvements
 
@@ -131,11 +137,14 @@ The simulation follows Conway's original rules:
 ┌─────────────────────────────────────────────┐
 │             🚀 COMING SOON 🚀               │
 ├─────────────────────────────────────────────┤
-│ ☐ Game over detection for static patterns  │
-│ ☐ Pattern loading from files               │
-│ ☐ Preset interesting starting patterns     │
+│ ☑ Game over detection for static patterns  │
+│ ☑ Pattern loading with preset patterns     │
+│ ☑ Wrapping boundaries (toroidal grid)      │
+│ ☐ Pattern loading from custom files        │
 │ ☐ Pause/resume functionality               │
-│ ☐ Wrapping boundaries (toroidal grid)      │
+│ ☐ Save/export functionality for patterns   │
+│ ☐ Color customization options              │
+│ ☐ Speed control during simulation          │
 └─────────────────────────────────────────────┘
 ```
 
